@@ -8,7 +8,6 @@ namespace BT_GenericCollection
     {
         static void Main(string[] args)
         {
-            // Thiết lập font chữ tiếng Việt cho nhập và xuất dữ liệu
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
 
@@ -16,26 +15,25 @@ namespace BT_GenericCollection
             Console.WriteLine($"{info} | Bài 16");
 
             Console.Write("Nhập chuỗi: ");
-            string input = Console.ReadLine();
+            string inputStr = Console.ReadLine();
 
-            // Sử dụng Dictionary để lưu trữ cặp: Ký tự (Key) - Số lần (Value)
-            Dictionary<char, int> counts = new Dictionary<char, int>();
+            // Khởi tạo tập hợp lưu trữ số lượng ký tự
+            Dictionary<char, int> charCounts = new Dictionary<char, int>();
 
-            foreach (char c in input)
+            foreach (char kyTu in inputStr)
             {
-                // Bỏ qua ký tự khoảng trắng
-                if (c == ' ') continue;
+                if (kyTu == ' ') continue;
 
-                // Nếu ký tự đã tồn tại thì tăng số lượng, ngược lại thì thêm mới
-                if (counts.ContainsKey(c)) counts[c]++;
-                else counts[c] = 1;
+                // Cập nhật số lần xuất hiện của ký tự
+                if (charCounts.ContainsKey(kyTu)) charCounts[kyTu]++;
+                else charCounts[kyTu] = 1;
             }
 
             Console.WriteLine("\nKết quả:");
-            // Duyệt Dictionary để in tần suất xuất hiện của từng ký tự
-            foreach (var item in counts)
+            // Xuất thông tin thống kê ra màn hình
+            foreach (KeyValuePair<char, int> entry in charCounts)
             {
-                Console.WriteLine($"- '{item.Key}': {item.Value}");
+                Console.WriteLine($"- '{entry.Key}': {entry.Value}");
             }
 
             Console.ReadKey();
