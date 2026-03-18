@@ -9,7 +9,6 @@ namespace BT_GenericCollection
     {
         static void Main(string[] args)
         {
-            // Thiết lập font chữ và thông tin cá nhân
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
 
@@ -19,29 +18,29 @@ namespace BT_GenericCollection
             List<int> list = new List<int>();
             Console.Write("Nhập số lượng phần tử của danh sách: ");
 
-            // Sử dụng TryParse để nhập liệu an toàn
             if (int.TryParse(Console.ReadLine(), out int n))
             {
                 for (int i = 0; i < n; i++)
                 {
                     Console.Write($"Nhập phần tử thứ {i + 1}: ");
-                    list.Add(int.Parse(Console.ReadLine()));
+                    int giaTri = int.Parse(Console.ReadLine());
+                    list.Add(giaTri);
                 }
 
                 Console.WriteLine("\nDanh sách vừa nhập: " + string.Join(", ", list));
 
+                // Phân tích tần suất xuất hiện của các phần tử
                 if (list.Count > 0)
                 {
-                    // Giải thuật: Nhóm các số giống nhau, sau đó sắp xếp theo số lượng giảm dần
-                    var groups = list.GroupBy(x => x)
-                                     .OrderByDescending(g => g.Count())
+                    var thongKe = list.GroupBy(num => num)
+                                     .OrderByDescending(nhom => nhom.Count())
                                      .ToList();
 
-                    // Lấy nhóm đầu tiên (nhóm có số lần xuất hiện nhiều nhất)
-                    var mostFrequent = groups.First();
+                    var ketQuaMax = thongKe.First();
 
-                    Console.WriteLine($"\n=> Số xuất hiện nhiều nhất là: {mostFrequent.Key}");
-                    Console.WriteLine($"=> Số lần xuất hiện: {mostFrequent.Count()} lần");
+                    // Hiển thị kết quả tìm kiếm ra màn hình Console
+                    Console.WriteLine($"\n=> Số xuất hiện nhiều nhất là: {ketQuaMax.Key}");
+                    Console.WriteLine($"\n=> Số lần xuất hiện: {ketQuaMax.Count()} lần");
                 }
             }
 
