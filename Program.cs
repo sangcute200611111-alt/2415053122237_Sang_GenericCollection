@@ -14,12 +14,12 @@ namespace BT_GenericCollection
             Console.WriteLine($"{info} | Bài 14");
 
             List<Student> ds = new List<Student> {
-                new Student { Id = 101, Name = "Sang" },
-                new Student { Id = 102, Name = "An" },
-                new Student { Id = 103, Name = "Bình" }
+                new Student { Id = 1, Name = "Sang" },
+                new Student { Id = 2, Name = "An" },
+                new Student { Id = 3, Name = "Bình" }
             };
 
-            Console.WriteLine("Danh sách trước khi xóa: ");
+            Console.WriteLine("Danh sách trước khi xóa:");
             foreach (var s in ds) Console.WriteLine($"- ID: {s.Id}, Tên: {s.Name}");
 
             Console.Write("\nNhập ID sinh viên cần xóa: ");
@@ -28,10 +28,17 @@ namespace BT_GenericCollection
                 int check = ds.RemoveAll(s => s.Id == idXoa);
                 if (check > 0)
                 {
-                    Console.WriteLine("=> Đã xóa thành công.");
-                    Console.WriteLine("Danh sách sau khi xóa: " + string.Join(", ", ds.ConvertAll(s => s.Name)));
+                    Console.WriteLine($"=> Đã xóa thành công sinh viên có ID: {idXoa}");
+                    Console.WriteLine("\nDanh sách sau khi xóa:");
+                    if (ds.Count > 0)
+                        foreach (var s in ds) Console.WriteLine($"- ID: {s.Id}, Tên: {s.Name}");
+                    else
+                        Console.WriteLine("(Danh sách trống)");
                 }
-                else Console.WriteLine("=> Không tìm thấy ID này.");
+                else
+                {
+                    Console.WriteLine("=> Không tìm thấy sinh viên nào có ID này.");
+                }
             }
 
             Console.ReadKey();
