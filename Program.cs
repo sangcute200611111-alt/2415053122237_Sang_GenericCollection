@@ -9,6 +9,7 @@ namespace BT_GenericCollection
     {
         static void Main(string[] args)
         {
+            // Thiết lập font chữ và thông tin cá nhân
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
 
@@ -17,6 +18,8 @@ namespace BT_GenericCollection
 
             List<int> list = new List<int>();
             Console.Write("Nhập số lượng phần tử của danh sách: ");
+
+            // Sử dụng TryParse để nhập liệu an toàn
             if (int.TryParse(Console.ReadLine(), out int n))
             {
                 for (int i = 0; i < n; i++)
@@ -29,10 +32,12 @@ namespace BT_GenericCollection
 
                 if (list.Count > 0)
                 {
+                    // Giải thuật: Nhóm các số giống nhau, sau đó sắp xếp theo số lượng giảm dần
                     var groups = list.GroupBy(x => x)
                                      .OrderByDescending(g => g.Count())
                                      .ToList();
 
+                    // Lấy nhóm đầu tiên (nhóm có số lần xuất hiện nhiều nhất)
                     var mostFrequent = groups.First();
 
                     Console.WriteLine($"\n=> Số xuất hiện nhiều nhất là: {mostFrequent.Key}");
