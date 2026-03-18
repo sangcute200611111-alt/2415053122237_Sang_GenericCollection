@@ -9,37 +9,33 @@ namespace BT_GenericCollection
     {
         static void Main(string[] args)
         {
-            // Thiết lập font chữ tiếng Việt và thông tin sinh viên
             Console.OutputEncoding = Encoding.UTF8;
             string info = "2415053122237 - Võ Văn Sang";
             Console.WriteLine($"{info} | Bài 12");
 
-            // Khởi tạo danh sách sinh viên kiểu Generic List<Student>
-            List<Student> ds = new List<Student> {
+            // Quản lý dữ liệu sinh viên thông qua tập hợp List
+            List<Student> danhSach = new List<Student> {
                 new Student { Id = 1, Name = "Sang" },
                 new Student { Id = 2, Name = "An" },
                 new Student { Id = 3, Name = "Bình" }
             };
 
             Console.WriteLine("Danh sách sinh viên hiện có:");
-            foreach (var s in ds)
-            {
-                Console.WriteLine($"- ID: {s.Id}, Tên: {s.Name}");
-            }
+            danhSach.ForEach(item => Console.WriteLine($"- ID: {item.Id}, Tên: {item.Name}"));
 
             Console.Write("\nNhập tên sinh viên cần tìm kiếm: ");
-            string searchName = Console.ReadLine();
+            string tenCanTim = Console.ReadLine();
 
-            // Sử dụng phương thức Find với biểu thức Lambda để tìm kiếm không phân biệt hoa thường
-            var sv = ds.Find(s => s.Name.Equals(searchName, StringComparison.OrdinalIgnoreCase));
+            // Thực hiện truy vấn tìm kiếm phần tử đầu tiên thỏa mãn điều kiện
+            var ketQuaTimKiem = danhSach.Find(sv => sv.Name.Equals(tenCanTim, StringComparison.OrdinalIgnoreCase));
 
-            if (sv != null)
+            if (ketQuaTimKiem != null)
             {
-                Console.WriteLine($"\n=> Kết quả: Tìm thấy sinh viên '{searchName}' có ID là {sv.Id}");
+                Console.WriteLine($"\n=> Kết quả: Tìm thấy sinh viên '{tenCanTim}' có ID là {ketQuaTimKiem.Id}");
             }
             else
             {
-                Console.WriteLine($"\n=> Kết quả: Không tìm thấy sinh viên nào tên '{searchName}'.");
+                Console.WriteLine($"\n=> Kết quả: Không tìm thấy sinh viên nào tên '{tenCanTim}'.");
             }
 
             Console.WriteLine("\nNhấn phím bất kỳ để thoát...");
