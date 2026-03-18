@@ -9,10 +9,12 @@ namespace BT_GenericCollection
     {
         static void Main(string[] args)
         {
+            // Thiết lập font chữ tiếng Việt và thông tin sinh viên
             Console.OutputEncoding = Encoding.UTF8;
             string info = "2415053122237 - Võ Văn Sang";
             Console.WriteLine($"{info} | Bài 12");
 
+            // Khởi tạo danh sách sinh viên kiểu Generic List<Student>
             List<Student> ds = new List<Student> {
                 new Student { Id = 1, Name = "Sang" },
                 new Student { Id = 2, Name = "An" },
@@ -28,6 +30,7 @@ namespace BT_GenericCollection
             Console.Write("\nNhập tên sinh viên cần tìm kiếm: ");
             string searchName = Console.ReadLine();
 
+            // Sử dụng phương thức Find với biểu thức Lambda để tìm kiếm không phân biệt hoa thường
             var sv = ds.Find(s => s.Name.Equals(searchName, StringComparison.OrdinalIgnoreCase));
 
             if (sv != null)
