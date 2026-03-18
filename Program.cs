@@ -12,11 +12,19 @@ namespace BT_GenericCollection
             Console.OutputEncoding = Encoding.UTF8;
             string info = "2415053122237 - Võ Văn Sang";
             Console.WriteLine($"{info} | Bài 11");
+
             List<Student> ds = new List<Student> {
-                new Student { Id = 1, Name = "Võ Văn Sang" },
-                new Student { Id = 2, Name = "Nguyễn Văn An" }
+                new Student { Id = 1, Name = "Sang" },
+                new Student { Id = 2, Name = "An" },
+                new Student { Id = 3, Name = "Bình" }
             };
-            foreach (var s in ds) Console.WriteLine($"ID: {s.Id} - Tên: {s.Name}");
+
+            Console.WriteLine("Danh sách sinh viên lưu trong List:");
+            foreach (var s in ds)
+            {
+                Console.WriteLine($"- ID: {s.Id}, Tên: {s.Name}");
+            }
+
             Console.ReadKey();
         }
     }
